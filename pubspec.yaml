@@ -1,0 +1,38 @@
+name: admin_alghozami
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  nb_utils: ^7.0.3
+  get: ^4.6.6
+  mongo_dart: ^0.10.3
+  rename_app: ^1.6.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/app/
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo/Cairo-Regular.ttf
+        - asset: assets/fonts/Cairo/Cairo-Bold.ttf
+          weight: 700
+    - family: playFair_Display
+      fonts:
+        - asset: assets/fonts/playFair_Display/PlayfairDisplay-Regular.ttf
+        - asset: assets/fonts/playFair_Display/PlayfairDisplay-Bold.ttf
+          weight: 700
+  
