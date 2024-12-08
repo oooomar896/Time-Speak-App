@@ -1,7 +1,7 @@
 // ignore_for_file: unused_import
 
-import 'package:admin_alghozami/core/constant/appTheme.dart';
-import 'package:admin_alghozami/core/services/services.dart';
+import 'package:untitled1/core/constant/appTheme.dart';
+import 'package:untitled1/core/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

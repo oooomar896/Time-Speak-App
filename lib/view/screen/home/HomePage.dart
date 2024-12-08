@@ -1,8 +1,8 @@
 
 // ignore_for_file: sort_child_properties_last, sized_box_for_whitespace
 
-import 'package:admin_alghozami/core/constant/imageassets.dart';
-import 'package:admin_alghozami/view/screen/home/controller_home.dart';
+import 'package:untitled1/core/constant/imageassets.dart';
+import 'package:untitled1/view/screen/home/controller_home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

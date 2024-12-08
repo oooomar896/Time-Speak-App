@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:admin_alghozami/view/screen/home/HomePage.dart';
+import 'package:untitled1/view/screen/home/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class OnBoarding extends PageView {

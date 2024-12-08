@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers, unnecessary_string_interpolations
 
-import 'package:admin_alghozami/core/constant/color.dart';
+import 'package:untitled1/core/constant/color.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtonLanguage extends StatelessWidget {

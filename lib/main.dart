@@ -1,9 +1,9 @@
 
-import 'package:admin_alghozami/binding/intialBinding.dart';
-import 'package:admin_alghozami/core/services/services.dart';
-import 'package:admin_alghozami/routes.dart';
-import 'package:admin_alghozami/view/screen/langauge/localization/changelocal.dart';
-import 'package:admin_alghozami/view/screen/langauge/localization/translilation.dart';
+import 'package:untitled1/binding/intialBinding.dart';
+import 'package:untitled1/core/services/services.dart';
+import 'package:untitled1/routes.dart';
+import 'package:untitled1/view/screen/langauge/localization/changelocal.dart';
+import 'package:untitled1/view/screen/langauge/localization/translilation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

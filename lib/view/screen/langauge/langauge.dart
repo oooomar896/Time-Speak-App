@@ -1,9 +1,9 @@
 // ignore_for_file: unnecessary_import
 
 
-import 'package:admin_alghozami/core/constant/routes.dart';
-import 'package:admin_alghozami/view/screen/langauge/localization/changelocal.dart';
-import 'package:admin_alghozami/view/wedgit/language/custombuttonLang.dart';
+import 'package:untitled1/core/constant/routes.dart';
+import 'package:untitled1/view/screen/langauge/localization/changelocal.dart';
+import 'package:untitled1/view/wedgit/language/custombuttonLang.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

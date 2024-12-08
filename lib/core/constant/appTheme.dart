@@ -1,6 +1,7 @@
 // ignore: file_names
-import 'package:admin_alghozami/core/constant/color.dart';
+import 'package:untitled1/core/constant/color.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled1/core/constant/color.dart';
 
 ThemeData themeEnglish = ThemeData(
     fontFamily: "Cairo",

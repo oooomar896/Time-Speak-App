@@ -1,8 +1,8 @@
 
-import 'package:admin_alghozami/core/constant/routes.dart';
-import 'package:admin_alghozami/view/screen/home/HomePage.dart';
-import 'package:admin_alghozami/view/screen/OnBoarding.dart';
-import 'package:admin_alghozami/view/screen/langauge/langauge.dart';
+import 'package:untitled1/core/constant/routes.dart';
+import 'package:untitled1/view/screen/home/HomePage.dart';
+import 'package:untitled1/view/screen/OnBoarding.dart';
+import 'package:untitled1/view/screen/langauge/langauge.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? routes = [

@@ -1,4 +1,4 @@
-import 'package:admin_alghozami/core/constant/routes.dart';
+import 'package:untitled1/core/constant/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
