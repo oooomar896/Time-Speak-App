@@ -1,203 +1,53 @@
-
-// ignore_for_file: sort_child_properties_last, sized_box_for_whitespace
-
-import 'package:untitled1/core/constant/imageassets.dart';
-import 'package:untitled1/view/screen/home/controller_home.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class MyHomePage extends PageView {
-  MyHomePage({super.key});
-@override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-class _MyHomePageState extends State<MyHomePage> {
+class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-        HomeControllerImp conroller = Get.put(HomeControllerImp());
-
     return Scaffold(
-      appBar: AppBar(
-        title:Text('0001'.tr,style: const TextStyle(fontWeight: FontWeight.bold),) ,
-        actions:  [
-          MaterialButton(onPressed: (){
-            conroller.language();
-          },child:const Icon(Icons.cabin_outlined),),
-        ],
-        backgroundColor:Colors.white
-      ),
-      body:   Center(
-        child: ListView(
-          children:  [
-            Column(
-              children: <Widget>[
-               Card(child: SizedBox(width: 400,height: 750,child:Column(children: [
-                const SizedBox(height: 5,),
-                Row(children: [Container(width: 400,height: 160,color: Colors.white,
-                child: PageView(children: const [
-                  Image(image: AssetImage(AppImageAssets.car2),width:350,),
-                  Image(image: AssetImage(AppImageAssets.car1),width: double.infinity,),
-                  Image(image: AssetImage(AppImageAssets.othath1),width: double.infinity,),
-                ],),)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-              const SizedBox(height: 350,)  ,
-              Row(
-                children: [
-                  const SizedBox(width: 50,),
-                  MaterialButton(
-                    onPressed: (){}
-                  ,child:Container(height: 30,width: 45, child: Text('print'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),)),
-                  color: const Color.fromARGB(255, 241, 158, 4),),
-                 const SizedBox(width: 10,),
-                  MaterialButton(
-                    onPressed: (){}
-                  ,child:Text('accept'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),),color: Colors.green,),
-                 const SizedBox(width: 10,),
-                      MaterialButton(
-                    onPressed: (){}
-                  ,child:Text('not accept'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),),color:Colors.red,),
-                ],
-              )
-              ],) ,),color: const Color.fromARGB(255, 238, 237, 236),),     Card(child: SizedBox(width: 400,height: 750,child:Column(children: [
-                const SizedBox(height: 5,),
-                Row(children: [Container(width: 400,height: 160,color: Colors.white,
-                child: PageView(children: const [
-                  Image(image: AssetImage(AppImageAssets.car2),width:350,),
-                  Image(image: AssetImage(AppImageAssets.car1),width: double.infinity,),
-                  Image(image: AssetImage(AppImageAssets.othath1),width: double.infinity,),
-                ],),)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-              const SizedBox(height: 350,)  ,
-              Row(
-                children: [
-                  const SizedBox(width: 50,),
-                  MaterialButton(
-                    onPressed: (){}
-                  ,child:Container(height: 30,width: 45, child: Text('print'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),)),
-                  color: const Color.fromARGB(255, 241, 158, 4),),
-                 const SizedBox(width: 10,),
-                  MaterialButton(
-                    onPressed: (){}
-                  ,child:Text('accept'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),),color: Colors.green,),
-                 const SizedBox(width: 10,),
-                      MaterialButton(
-                    onPressed: (){}
-                  ,child:Text('not accept'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),),color:Colors.red,),
-                ],
-              )
-              ],) ,),color: const Color.fromARGB(255, 238, 237, 236),),     Card(child: SizedBox(width: 400,height: 750,child:Column(children: [
-                const SizedBox(height: 5,),
-                Row(children: [Container(width: 400,height: 160,color: Colors.white,
-                child: PageView(children: const [
-                  Image(image: AssetImage(AppImageAssets.car2),width:350,),
-                  Image(image: AssetImage(AppImageAssets.car1),width: double.infinity,),
-                  Image(image: AssetImage(AppImageAssets.othath1),width: double.infinity,),
-                ],),)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-              const SizedBox(height: 350,)  ,
-              Row(
-                children: [
-                  const SizedBox(width: 50,),
-                  MaterialButton(
-                    onPressed: (){}
-                  ,child:Container(height: 30,width: 45, child: Text('print'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),)),
-                  color: const Color.fromARGB(255, 241, 158, 4),),
-                 const SizedBox(width: 10,),
-                  MaterialButton(
-                    onPressed: (){}
-                  ,child:Text('accept'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),),color: Colors.green,),
-                 const SizedBox(width: 10,),
-                      MaterialButton(
-                    onPressed: (){}
-                  ,child:Text('not accept'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),),color:Colors.red,),
-                ],
-              )
-              ],) ,),color: const Color.fromARGB(255, 238, 237, 236),),
-          Card(child: SizedBox(width: 400,height: 750,child:Column(children: [
-                const SizedBox(height: 5,),
-                Row(children: [Container(width: 400,height: 160,color: Colors.white,
-                child: PageView(children: const [
-                  Image(image: AssetImage(AppImageAssets.car2),width:350,),
-                  Image(image: AssetImage(AppImageAssets.car1),width: double.infinity,),
-                  Image(image: AssetImage(AppImageAssets.othath1),width: double.infinity,),
-                ],),)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-              const SizedBox(height: 350,)  ,
-              Row(
-                children: [
-                  const SizedBox(width: 50,),
-                  MaterialButton(
-                    onPressed: (){}
-                  ,child:Container(height: 30,width: 45, child: Text('print'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),)),
-                  color: const Color.fromARGB(255, 241, 158, 4),),
-                 const SizedBox(width: 10,),
-                  MaterialButton(
-                    onPressed: (){}
-                  ,child:Text('accept'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),),color: Colors.green,),
-                 const SizedBox(width: 10,),
-                      MaterialButton(
-                    onPressed: (){}
-                  ,child:Text('not accept'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),),color:Colors.red,),
-                ],
-              )
-              ],) ,),color: const Color.fromARGB(255, 238, 237, 236),),     Card(child: SizedBox(width: 400,height: 750,child:Column(children: [
-                const SizedBox(height: 5,),
-                Row(children: [Container(width: 400,height: 160,color: Colors.white,
-                child: PageView(children: const [
-                  Image(image: AssetImage(AppImageAssets.car2),width:350,),
-                  Image(image: AssetImage(AppImageAssets.car1),width: double.infinity,),
-                  Image(image: AssetImage(AppImageAssets.othath1),width: double.infinity,),
-                ],),)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-                const SizedBox(height: 10,),
-                Row(children: [Container(width: 400,height: 50,color: Colors.white,)],),
-              const SizedBox(height: 350,)  ,
-              Row(
-                children: [
-                  const SizedBox(width: 50,),
-                  MaterialButton(
-                    onPressed: (){}
-                  ,child:Container(height: 30,width: 45, child: Text('print'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),)),
-                  color: const Color.fromARGB(255, 241, 158, 4),),
-                 const SizedBox(width: 10,),
-                  MaterialButton(
-                    onPressed: (){}
-                  ,child:Text('accept'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),),color: Colors.green,),
-                 const SizedBox(width: 10,),
-                      MaterialButton(
-                    onPressed: (){}
-                  ,child:Text('not accept'.tr,style: const TextStyle(color: Colors.white,fontSize: 20),),color:Colors.red,),
-                ],
-              )
-              ],) ,),color: const Color.fromARGB(255, 238, 237, 236),)
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("العد التنازلي للجلسة", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black)),
+            SizedBox(height: 30),
+            _buildCountdownTimer(),
+            SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildActionButton("بدء الجلسة", Colors.green),
+                SizedBox(width: 20),
+                _buildActionButton("إيقاف مؤقت", Colors.orange),
+                SizedBox(width: 20),
+                _buildActionButton("إنهاء", Colors.red),
               ],
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildCountdownTimer() {
+    return CircularProgressIndicator(
+      value: 0.5, // قيمة توضح التقدم (من 0 إلى 1)
+      backgroundColor: Colors.grey[300],
+      valueColor: AlwaysStoppedAnimation(Colors.green),
+      strokeWidth: 8,
+    );
+  }
+
+  Widget _buildActionButton(String label, Color color) {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(color),
+        padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 14, horizontal: 30)),
+        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+      ),
+      child: Text(label, style: TextStyle(fontSize: 18)),
     );
   }
 }
