@@ -1,16 +1,17 @@
-import 'package:auctions_mulhmah/controller/auth/login_controller.dart';
-import 'package:auctions_mulhmah/core/constant/imageassets.dart';
-import 'package:auctions_mulhmah/core/functions/alertexetapp.dart';
-import 'package:auctions_mulhmah/core/functions/valedinput.dart';
-import 'package:auctions_mulhmah/core/services/services.dart';
-import 'package:auctions_mulhmah/view/widget/auth/costmtextfrom/chkrememberme.dart';
-import 'package:auctions_mulhmah/view/widget/auth/costmtextfrom/costmtextfromAuth.dart';
-import 'package:auctions_mulhmah/view/widget/costmtextfrom/costmtextbodyauth.dart';
-import 'package:auctions_mulhmah/view/widget/costmtextfrom/costmtexttiltleauth.dart';
-import 'package:auctions_mulhmah/view/widget/costmtextfrom/custombuttonauth.dart';
-import 'package:auctions_mulhmah/view/widget/costmtextfrom/signupbtngo.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled1/controller/auth/login_controller.dart';
+import 'package:untitled1/core/constant/imageassets.dart';
+import 'package:untitled1/core/functions/alertexetapp.dart';
+import 'package:untitled1/core/functions/valedinput.dart';
+import 'package:untitled1/core/services/services.dart';
+import 'package:untitled1/view/wedgit/auth/costmtextfrom/chkrememberme.dart';
+import 'package:untitled1/view/wedgit/auth/costmtextfrom/costmtextbodyauth.dart';
+import 'package:untitled1/view/wedgit/auth/costmtextfrom/costmtextfromAuth.dart';
+import 'package:untitled1/view/wedgit/auth/costmtextfrom/custombuttonauth.dart';
+import 'package:untitled1/view/wedgit/auth/costmtextfrom/signupbtngo.dart';
+import 'package:untitled1/view/wedgit/costmtextfrom/costmtexttiltleauth.dart';
 
 // ignore: must_be_immutable
 class Login extends StatelessWidget {
@@ -36,7 +37,7 @@ class Login extends StatelessWidget {
                      SizedBox(
                       width: 200,
                       height: 200,
-                      child: Image(image: const AssetImage(AppImageAssets.auctions),color: theme.primaryColorDark),
+                      child: Image(image: const AssetImage(AppImageAssets.logo),color: theme.primaryColorDark),
                     ),
                     CostmTextTitleAuth(text: "174".tr,),
                     const SizedBox(height: 20),

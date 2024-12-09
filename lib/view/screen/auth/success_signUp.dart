@@ -1,9 +1,10 @@
 // ignore: file_names
-import 'package:auctions_mulhmah/controller/auth/successsignup_controller.dart';
-import 'package:auctions_mulhmah/view/widget/costmtextfrom/costmtextbodyauth.dart';
-import 'package:auctions_mulhmah/view/widget/costmtextfrom/custombuttonauth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled1/controller/auth/successsignup_controller.dart';
+import 'package:untitled1/view/wedgit/auth/costmtextfrom/costmtextbodyauth.dart';
+import 'package:untitled1/view/wedgit/auth/costmtextfrom/custombuttonauth.dart';
 
 class SuccessSinUp2 extends StatefulWidget {
   const SuccessSinUp2({super.key});

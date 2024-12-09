@@ -1,11 +1,12 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'package:auctions_mulhmah/controller/auth/VerfiycodeSignUp_controller.dart';
-import 'package:auctions_mulhmah/view/widget/costmtextfrom/costmtextbodyauth.dart';
-import 'package:auctions_mulhmah/view/widget/costmtextfrom/costmtexttiltleauth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
+import 'package:untitled1/controller/auth/VerfiycodeSignUp_controller.dart';
+import 'package:untitled1/view/wedgit/auth/costmtextfrom/costmtextbodyauth.dart';
+import 'package:untitled1/view/wedgit/costmtextfrom/costmtexttiltleauth.dart';
 
 class VerfiycodeSignUp2 extends StatefulWidget {
   const VerfiycodeSignUp2({super.key});

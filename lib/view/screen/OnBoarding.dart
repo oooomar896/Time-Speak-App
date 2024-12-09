@@ -17,7 +17,7 @@ class _SplashScreenState extends State<OnBoarding> {
     Timer(
         const Duration(seconds: 5),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) =>  MyHomePage())));
+            context, MaterialPageRoute(builder: (context) =>  MainScreen())));
   }
   @override
   Widget build(BuildContext context) {

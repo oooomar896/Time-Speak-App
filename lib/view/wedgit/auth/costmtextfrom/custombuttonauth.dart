@@ -1,6 +1,5 @@
 // ignore_for_file: sized_box_for_whitespace
 
-import 'package:auctions_mulhmah/core/constant/color.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtonAuth extends StatelessWidget {
@@ -21,7 +20,7 @@ class CustomButtonAuth extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           onPressed: onPressed,
-          color: AppColor.primaryOne,
+          color: Colors.black,
           textColor: const Color.fromARGB(255, 255, 255, 255),
           child: Text(text) //Text("16".tr),
           ),

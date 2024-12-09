@@ -1,4 +1,3 @@
-import 'package:auctions_mulhmah/core/constant/color.dart';
 import 'package:flutter/material.dart';
 
 class TextSignUpOrSignIn extends StatelessWidget {
@@ -25,7 +24,7 @@ class TextSignUpOrSignIn extends StatelessWidget {
           child: Text(
             text2,
             style: const TextStyle(
-                color: AppColor.textColorBack,
+                color: Colors.black,
                  fontWeight: FontWeight.bold),
           ),
         )

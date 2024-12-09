@@ -1,15 +1,15 @@
 // ignore_for_file: camel_case_types
 
 import 'dart:io';
-import 'package:auctions_mulhmah/controller/auth/signup_controller.dart';
-import 'package:auctions_mulhmah/core/functions/alertexetapp.dart';
-import 'package:auctions_mulhmah/core/functions/valedinput.dart';
-import 'package:auctions_mulhmah/view/widget/auth/costmtextfrom/costmtextfromAuth.dart';
-import 'package:auctions_mulhmah/view/widget/auth/costmtextfrom/custombuttonauth.dart';
-import 'package:auctions_mulhmah/view/widget/costmtextfrom/costmtexttiltleauth.dart';
+import 'package:untitled1/controller/auth/signup_controller.dart';
+import 'package:untitled1/core/functions/alertexetapp.dart';
+import 'package:untitled1/core/functions/valedinput.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:untitled1/view/wedgit/auth/costmtextfrom/costmtextfromAuth.dart';
+import 'package:untitled1/view/wedgit/auth/costmtextfrom/custombuttonauth.dart';
+import 'package:untitled1/view/wedgit/costmtextfrom/costmtexttiltleauth.dart';
 
 class Sign_Up extends StatefulWidget {
   const Sign_Up({super.key});

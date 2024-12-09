@@ -4,6 +4,9 @@ import 'package:auctions_mulhmah/core/services/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled1/core/constant/color.dart';
+import 'package:untitled1/core/constant/routes.dart';
+import 'package:untitled1/core/services/services.dart';
 
 abstract class LoginController extends GetxController {
   void home();
@@ -42,7 +45,7 @@ class LoginControllerImp extends LoginController {
           '265'.tr,
           icon: const Icon(
             Icons.workspaces,
-            color: AppColor.primaryOne,
+            color: Color.fromARGB(255, 65, 91, 129),
           ),
           snackPosition: SnackPosition.BOTTOM,
         );
@@ -88,7 +91,7 @@ class LoginControllerImp extends LoginController {
       '265'.tr,
       icon: const Icon(
         Icons.workspaces,
-        color: AppColor.primaryOne,
+        color: Color.fromARGB(255, 65, 91, 129),
       ),
       snackPosition: SnackPosition.BOTTOM,
     );

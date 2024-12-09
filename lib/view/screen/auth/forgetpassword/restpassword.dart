@@ -1,11 +1,11 @@
-import 'package:auctions_mulhmah/controller/auth/successresetpassword_controller.dart';
-import 'package:auctions_mulhmah/core/functions/valedinput.dart';
-import 'package:auctions_mulhmah/view/widget/auth/costmtextfrom/costmtextbodyauth.dart';
-import 'package:auctions_mulhmah/view/widget/auth/costmtextfrom/costmtextfromAuth.dart';
-import 'package:auctions_mulhmah/view/widget/costmtextfrom/costmtexttiltleauth.dart';
-import 'package:auctions_mulhmah/view/widget/costmtextfrom/custombuttonauth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled1/controller/auth/successresetpassword_controller.dart';
+import 'package:untitled1/core/functions/valedinput.dart';
+import 'package:untitled1/view/wedgit/auth/costmtextfrom/costmtextbodyauth.dart';
+import 'package:untitled1/view/wedgit/auth/costmtextfrom/costmtextfromAuth.dart';
+import 'package:untitled1/view/wedgit/auth/costmtextfrom/custombuttonauth.dart';
+import 'package:untitled1/view/wedgit/costmtextfrom/costmtexttiltleauth.dart';
 
 class Restpassword extends StatefulWidget {
   const Restpassword({super.key});

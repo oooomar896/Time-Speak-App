@@ -16,6 +16,11 @@ dependencies:
   cupertino_icons: ^1.0.8
   get: ^4.6.6
   nb_utils: ^7.0.7
+  path_provider: ^2.1.5
+  csv: ^6.0.0
+  image_picker: ^1.1.2
+  flutter_otp_text_field: ^1.2.0
+  firebase_auth: ^5.3.4
 
 dev_dependencies:
   flutter_test:

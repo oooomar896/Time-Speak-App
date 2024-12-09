@@ -1,10 +1,9 @@
-import 'package:auctions_mulhmah/core/constant/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled1/core/constant/routes.dart';
 
 abstract class CheckController extends GetxController {
   checkemail();
-  GoToVerfiyCode();
 }
 
 class CheckControllerControllerImp extends CheckController {
@@ -15,9 +14,7 @@ class CheckControllerControllerImp extends CheckController {
   @override
 
   // @override
-  GoToVerfiyCode() {
-    Get.offNamed(AppRoute.verfiyCodeSignUp);
-  }
+
 
   @override
   void onInit() {

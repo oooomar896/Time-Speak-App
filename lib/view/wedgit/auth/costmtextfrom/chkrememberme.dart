@@ -1,9 +1,9 @@
 // ignore_for_file: sized_box_for_whitespace
 
-import 'package:auctions_mulhmah/core/constant/color.dart';
-import 'package:auctions_mulhmah/core/services/services.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled1/core/services/services.dart';
 
 // ignore: camel_case_types
 class chkrememberme extends StatefulWidget {
@@ -44,7 +44,7 @@ class chkrememberme_state extends State<chkrememberme> {
       title: Text("تذكير".tr),
       value: IsChecked,
       checkColor: IsChecked ? const Color.fromARGB(255, 255, 255, 255) : const Color.fromARGB(255, 255, 255, 255),
-      activeColor: IsChecked ? AppColor.primaryOne : const Color.fromARGB(255, 124, 89, 56),
+      activeColor: IsChecked ? Colors.black : const Color.fromARGB(255, 124, 89, 56),
       controlAffinity: ListTileControlAffinity.leading,
       onChanged: (value) {
         setState(() {

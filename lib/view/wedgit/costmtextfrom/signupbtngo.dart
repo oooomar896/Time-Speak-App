@@ -1,7 +1,7 @@
 // ignore_for_file: sized_box_for_whitespace, use_super_parameters
 
-import 'package:auctions_mulhmah/core/constant/color.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled1/core/constant/color.dart';
 
 // ignore: camel_case_types
 class signupbtngo extends StatelessWidget {
@@ -27,8 +27,8 @@ class signupbtngo extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
           onPressed: onPressed,
-          color: AppColor.primaryColor2,
-          textColor: AppColor.textColorBack,
+          color: const Color.fromARGB(255, 46, 79, 100),
+          textColor: const Color.fromARGB(255, 0, 0, 0),
           child: Text(text,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25),) //Text("16".tr),
           ),
     );
