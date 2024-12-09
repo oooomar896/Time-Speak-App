@@ -1,26 +1,27 @@
-import 'package:untitled1/core/constant/routes.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class HomeController extends GetxController {
-  home();
-  language();
+
 }
 
 class HomeControllerImp extends HomeController {
-  GlobalKey<FormState> formState = GlobalKey<FormState>();
+  // تعريف المتغيرات الملاحظة
+  var count = 0.obs;
+  var isFavorite = false.obs;
+  var showChartCount = 0.obs;
 
-
-
-
-  @override
-  home() {
-      Get.offNamed(AppRoute.home);
-
+  // دالة لزيادة العدد
+  void increment() {
+    count++;
   }
-  
-  @override
-  language() {
-      Get.offNamed(AppRoute.Langauge);
+
+  // دالة لتغيير حالة المفضلة
+  void toggleFavorite() {
+    isFavorite.value = !isFavorite.value;
+  }
+
+  // دالة لزيادة عدد العرض
+  void incrementChart() {
+    showChartCount++;
   }
 }

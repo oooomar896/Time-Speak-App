@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, deprecated_member_use, sort_child_properties_last, prefer_final_fields, avoid_print
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,75 +7,131 @@ import 'package:get/get.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
-import 'package:untitled1/view/screen/home/screen/redPage.dart';
-import 'package:untitled1/view/screen/home/screen/sessition.dart';
-import 'package:untitled1/view/screen/home/screen/setting.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'package:untitled1/view/screen/home/controller/controller_home.dart';
 
 class MainScreen extends StatelessWidget {
   final SessionController controller = Get.put(SessionController());
-
+ // باستخدام GetX للحصول على HomeController
+    final HomeController controller2 = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("العد التنازلي للجلسة", style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.blue,
+        title: Text("إدارة الجلسة", style: TextStyle(color: Colors.white)),
         actions: [
           IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              Get.to(() => SettingsScreen());
-            },
+            icon: Icon(Icons.notifications),
+            onPressed: controller.showNotificationSettings,
           ),
           IconButton(
             icon: Icon(Icons.history),
-            onPressed: () {
-              Get.to(() => SessionHistoryScreen());
-            },
+            onPressed: () => Get.to(SessionHistoryScreen()),
           ),
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Obx(() => Text(
-              "المتحدث الحالي: ${controller.currentSpeaker}",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),
-            )),
-            SizedBox(height: 30),
-            Obx(() => CircularProgressIndicator(
-              value: controller.remainingTime.value / controller.totalTime.value,
-              backgroundColor: Colors.grey[300],
-              valueColor: AlwaysStoppedAnimation(Colors.green),
-              strokeWidth: 8,
-            )),
-            SizedBox(height: 20),
-            Obx(() => Text(
-              "الوقت المتبقي: ${controller.remainingTime.value ~/ 60}:${controller.remainingTime.value % 60}",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blue),
-            )),
-            SizedBox(height: 30),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
               children: [
-                _buildActionButton("بدء الجلسة", Colors.green, controller.startSession),
-                SizedBox(width: 20),
-                _buildActionButton("إيقاف مؤقت", Colors.orange, controller.pauseSession),
-                SizedBox(width: 20),
-                _buildActionButton("إنهاء", Colors.red, controller.endSession),
+                // قسم التحليلات
+                Obx(() => Container(
+                      padding: EdgeInsets.all(20),
+                      child: PieChart(PieChartData(sections: controller.getChartSections())),
+                    )),
+                // المتحدث الحالي
+                Obx(() => Container(
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      child: Text(
+                        "المتحدث الحالي: ${controller.currentSpeaker.value}",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    )),
+                // أزرار التحكم
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _buildActionButton("بدء", Colors.green, controller.startSession),
+                    _buildActionButton("إيقاف", Colors.red, controller.pauseSession),
+                    _buildActionButton("إنهاء", Colors.blue, controller.endSession),
+                  ],
+                ),
+                SizedBox(height: 20),
+                ElevatedButton.icon(
+                  onPressed: controller.startListening,
+                  icon: Icon(Icons.mic),
+                  label: Text("بدء الاستماع"),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.indigo, padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15)),
+                ),
               ],
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: controller.startListening,
-        child: Icon(Icons.mic),
-        backgroundColor: Colors.blue,
+          ),
+          // تنبيه انتهاء الوقت
+          Obx(() {
+            if (controller.remainingTime.value <= 30) {
+              return Positioned(
+                bottom: 10,
+                left: 10,
+                right: 10,
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  color: Colors.red[300],
+                  child: Text(
+                    "تنبيه: تبقى أقل من 30 ثانية للجلسة",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              );
+            }
+            return SizedBox.shrink();
+          }),
+        ],
       ),
     );
+  }
+
+  void sendNotification(String title, String message) async {
+    FlutterLocalNotificationsPlugin notifications = FlutterLocalNotificationsPlugin();
+    const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
+      'session_channel',
+      'Session Notifications',
+      importance: Importance.high,
+      priority: Priority.high,
+    );
+
+    const NotificationDetails details = NotificationDetails(android: androidDetails);
+    await notifications.show(0, title, message, details);
+  }
+
+  Future<void> analyzeText(String text) async {
+    final response = await http.post(
+      Uri.parse("https://api.textanalysis.com/sentiment"),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({"text": text, "language": "ar"}),
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      print("تحليل النص: ${data['sentiment']}");
+      Get.snackbar("تحليل النص", "المشاعر: ${data['sentiment']}");
+    } else {
+      print("فشل التحليل: ${response.statusCode}");
+    }
+  }
+
+  void handleVoiceCommand(String command) {
+    if (command.contains("ابدأ الجلسة")) {
+      controller.startSession();
+    } else if (command.contains("أوقف الجلسة")) {
+      controller.pauseSession();
+    } else if (command.contains("أنهي الجلسة")) {
+      controller.endSession();
+    } else {
+      Get.snackbar("أمر غير معروف", "لم أتمكن من التعرف على الأمر: $command");
+    }
   }
 
   Widget _buildActionButton(String label, Color color, VoidCallback onPressed) {
@@ -89,150 +146,117 @@ class MainScreen extends StatelessWidget {
       child: Text(label, style: TextStyle(fontSize: 15, color: Colors.white)),
     );
   }
+
+  Widget _buildStatisticsChart(Map<String, int> stats) {
+    if (stats.isEmpty) {
+      return Text("لا توجد بيانات لعرض الإحصاءات");
+    }
+
+    List<PieChartSectionData> sections = stats.entries
+        .map((entry) => PieChartSectionData(
+              color: Colors.primaries[stats.keys.toList().indexOf(entry.key) % Colors.primaries.length],
+              value: entry.value.toDouble(),
+              title: "${entry.key} (${entry.value} ثانية)",
+              radius: 50,
+            ))
+        .toList();
+
+    return PieChart(PieChartData(sections: sections));
+  }
 }
 
 class SessionController extends GetxController {
-  RxInt remainingTime = 1200.obs;
-  RxInt totalTime = 1200.obs;
-  RxString currentSpeaker = "غير معروف".obs;
-  RxBool isRunning = false.obs;
-  RxBool isPaused = false.obs;
-  RxString speakerStatus = "غير متاح".obs;
-  SpeechToText _speechToText = SpeechToText();
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-
-  @override
-  void onInit() {
-    super.onInit();
-    _initializeNotifications();
-    fetchSpeakerStatus(); // جلب حالة المتحدث من الـ API عند تحميل الصفحة
-  }
-
-  void _initializeNotifications() {
-    var initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
-    var initializationSettings = InitializationSettings(android: initializationSettingsAndroid);
-    flutterLocalNotificationsPlugin.initialize(initializationSettings);
-  }
-
-  void _showNotification(String title, String body) async {
-    var androidDetails = AndroidNotificationDetails(
-      'channel_id', 'channel_name',
-      importance: Importance.max,
-      priority: Priority.high,
-    );
-    var notificationDetails = NotificationDetails(android: androidDetails);
-
-    await flutterLocalNotificationsPlugin.show(
-      0, title, body, notificationDetails,
-      payload: 'session_end',
-    );
-  }
+  RxBool isSessionActive = false.obs;
+  RxString currentSpeaker = ''.obs;
+  RxInt remainingTime = 600.obs; // الجلسة مدتها الافتراضية 10 دقائق (بالثواني)
+  Timer? sessionTimer;
 
   void startSession() {
-    if (!isRunning.value) {
-      isRunning.value = true;
-      isPaused.value = false;
-      _showNotification("بدء الجلسة", "تم بدء الجلسة بنجاح.");
-      _startTimer();
+    if (isSessionActive.value) {
+      Get.snackbar("تنبيه", "الجلسة قيد التشغيل بالفعل!");
+      return;
     }
+
+    // تعيين حالة الجلسة
+    isSessionActive.value = true;
+    currentSpeaker.value = "اسم المتحدث الأول"; // تعديل حسب الحاجة
+
+    // بدء مؤقت الجلسة
+    sessionTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (remainingTime.value > 0) {
+        remainingTime.value--;
+      } else {
+        endSession();
+      }
+    });
+
+    // عرض رسالة نجاح
+    Get.snackbar("بدء الجلسة", "تم بدء الجلسة بنجاح!");
   }
 
   void pauseSession() {
-    if (isRunning.value && !isPaused.value) {
-      isPaused.value = true;
-      _showNotification("إيقاف الجلسة", "تم إيقاف الجلسة مؤقتًا.");
-    } else if (isRunning.value && isPaused.value) {
-      isPaused.value = false;
-      _showNotification("استئناف الجلسة", "تم استئناف الجلسة.");
-      _startTimer();
+    if (!isSessionActive.value) {
+      Get.snackbar("تنبيه", "لا توجد جلسة قيد التشغيل للإيقاف.");
+      return;
     }
+
+    sessionTimer?.cancel();
+    isSessionActive.value = false;
+
+    Get.snackbar("إيقاف الجلسة", "تم إيقاف الجلسة مؤقتًا.");
   }
 
   void endSession() {
-    isRunning.value = false;
-    saveSession(currentSpeaker.value, totalTime.value - remainingTime.value);
-    remainingTime.value = totalTime.value;
-    _showNotification("انتهت الجلسة", "تم إنهاء الجلسة بنجاح.");
-    Get.to(() => RedAlertScreen());
+    sessionTimer?.cancel();
+    isSessionActive.value = false;
+    remainingTime.value = 0;
+
+    Get.snackbar("إنهاء الجلسة", "تم إنهاء الجلسة بنجاح.");
   }
 
-  void _startTimer() async {
-    while (isRunning.value && remainingTime.value > 0) {
-      if (isPaused.value) {
-        break;
-      }
-      await Future.delayed(Duration(seconds: 1));
-      remainingTime.value--;
-      if (remainingTime.value == 0) {
-        endSession();
-      }
-    }
+  void showNotificationSettings() {
+    // أضف هنا الكود لفتح إعدادات الإشعارات حسب حاجتك.
   }
 
-  void startListening() async {
-    bool available = await _speechToText.initialize();
-    if (available) {
-      _speechToText.listen(onResult: (result) {
-        currentSpeaker.value = result.recognizedWords.isNotEmpty ? result.recognizedWords : "غير معروف";
-        fetchSpeakerStatus(); // تحديث حالة المتحدث مع كل كلمة تم التعرف عليها
-        analyzeSpeech(result.recognizedWords); // تحليل النص باستخدام API
-      });
-    }
+  List<PieChartSectionData> getChartSections() {
+    // يمكن تعديل هذا لتوفير بيانات فعلية للرسم البياني
+    return [
+      PieChartSectionData(value: 40, color: Colors.green, title: '40%'),
+      PieChartSectionData(value: 30, color: Colors.blue, title: '30%'),
+      PieChartSectionData(value: 20, color: Colors.red, title: '20%'),
+      PieChartSectionData(value: 10, color: Colors.orange, title: '10%'),
+    ];
   }
 
-  void stopListening() {
-    _speechToText.stop();
-  }
-
-  // Fetch speaker status from API
-  Future<void> fetchSpeakerStatus() async {
-    try {
-      final response = await http.get(Uri.parse('https://api.example.com/getSpeakerStatus?name=${currentSpeaker.value}'));
-      if (response.statusCode == 200) {
-        var data = json.decode(response.body);
-        speakerStatus.value = data['status']; // تحديث حالة المتحدث
-      } else {
-        speakerStatus.value = "غير متاح";
-      }
-    } catch (e) {
-      speakerStatus.value = "غير متاح";
-    }
-  }
-
-  // Analyze Speech using an NLP API
-  Future<void> analyzeSpeech(String speechText) async {
-    try {
-      final response = await http.post(
-        Uri.parse('https://api.example.com/analyzeSpeech'),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({'text': speechText}),
-      );
-
-      if (response.statusCode == 200) {
-        var data = json.decode(response.body);
-        // تحليل النص حسب الكلمات الرئيسية، أو النوايا
-        print("تحليل النص: ${data['analysis']}");
-      } else {
-        print("فشل تحليل النص");
-      }
-    } catch (e) {
-      print("خطأ في تحليل النص: $e");
-    }
+  void startListening() {
+    // بدء الاستماع للأوامر الصوتية
   }
 }
 
-
-// Save Session to Firebase
-// Save Session to Firebase
-void saveSession(String speakerName, int timeSpent) async {
-  await FirebaseFirestore.instance.collection('sessions').add({
-    'speaker': speakerName,
-    'timeSpent': timeSpent,
-    'date': Timestamp.now(),
-  });
+class SessionHistoryScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("تاريخ الجلسات"),
+      ),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection('sessions').snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
+          var sessions = snapshot.data!.docs;
+          return ListView.builder(
+            itemCount: sessions.length,
+            itemBuilder: (context, index) {
+              var session = sessions[index];
+              return ListTile(
+                title: Text("المتحدث: ${session['speaker']}"),
+                subtitle: Text("المدة: ${session['timeSpent']} ثانية"),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
 }
-
-
-// Red Alert Screen
-// Red Alert Screen
-
