@@ -2,10 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled1/view/screen/home/screen/HomePage.dart';
 
 class RedAlertScreen extends StatelessWidget {
-  const RedAlertScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,16 +13,18 @@ class RedAlertScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("انتهى الوقت!", style: TextStyle(color: Colors.white, fontSize: 30)),
+            Text("انتهى الوقت!", style: TextStyle(fontSize: 32, color: Colors.white, fontWeight: FontWeight.bold)),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () => Get.offAllNamed('/'),
-              child: Text("العودة إلى الشاشة الرئيسية"),
+              onPressed: () {
+                Get.offAll(() => MainScreen());
+              },
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.red, backgroundColor: Colors.white,
+                backgroundColor: Colors.white,
                 padding: EdgeInsets.symmetric(vertical: 14, horizontal: 30),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               ),
+              child: Text("إعادة الجلسة", style: TextStyle(color: Colors.red, fontSize: 18)),
             ),
           ],
         ),
