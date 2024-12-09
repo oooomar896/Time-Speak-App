@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:auctions_mulhmah/core/constant/routes.dart';
 import 'package:get/get.dart';
+import 'package:untitled1/core/constant/routes.dart';
 
 abstract class SuccessSignUPController extends GetxController {
   GoToPageLogin();

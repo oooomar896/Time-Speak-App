@@ -1,6 +1,6 @@
-import 'package:auctions_mulhmah/core/constant/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled1/core/constant/routes.dart';
 
 abstract class VerfiycodeController extends GetxController {
   checkcode();

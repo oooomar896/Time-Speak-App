@@ -2,12 +2,12 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:auctions_mulhmah/core/constant/color.dart';
-import 'package:auctions_mulhmah/core/constant/routes.dart';
-import 'package:auctions_mulhmah/core/services/services.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart' as path;
+import 'package:untitled1/core/constant/routes.dart';
+import 'package:untitled1/core/services/services.dart';
 
 abstract class SinUpController extends GetxController {
   signUpValid();
@@ -130,7 +130,7 @@ class SinUpControllerImp extends SinUpController {
       'Welcome in Auction Live',
       icon: const Icon(
         Icons.workspaces,
-        color: AppColor.primaryOne,
+        color: Color.fromARGB(255, 77, 92, 124),
       ),
       snackPosition: SnackPosition.BOTTOM,
     );

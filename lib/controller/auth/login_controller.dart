@@ -1,6 +1,4 @@
-import 'package:auctions_mulhmah/core/constant/color.dart';
-import 'package:auctions_mulhmah/core/constant/routes.dart';
-import 'package:auctions_mulhmah/core/services/services.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -83,19 +81,7 @@ class LoginControllerImp extends LoginController {
   }
 
   // ignore: non_constant_identifier_names
-  void MapsList() {
-    Get.offNamed(AppRoute.maps);
-    Get.snackbar(
-      padding: const EdgeInsets.all(30),
-      '262'.tr,
-      '265'.tr,
-      icon: const Icon(
-        Icons.workspaces,
-        color: Color.fromARGB(255, 65, 91, 129),
-      ),
-      snackPosition: SnackPosition.BOTTOM,
-    );
-  }
+
 
   @override
   void home() {
