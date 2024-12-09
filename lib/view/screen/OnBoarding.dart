@@ -34,7 +34,7 @@ class _SplashScreenState extends State<OnBoarding> {
                  Column(
                     children: [
                       const SizedBox(height: 300,),
-                      Image(image: const AssetImage(AppImageAssets.logo ),),
+                      Icon(Icons.lock_clock,size: 100,color: Colors.blue,),
                        Text("وقت الحديث".tr,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
                     ],
                 ),
