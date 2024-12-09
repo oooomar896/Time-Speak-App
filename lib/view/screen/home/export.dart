@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
 class ExportSessionReportScreen extends StatelessWidget {
+  const ExportSessionReportScreen({super.key});
+
   // إنشاء تقرير CSV
   Future<void> exportToCSV(List<Map<String, dynamic>> sessions) async {
     List<List<dynamic>> rows = [];

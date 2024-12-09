@@ -7,7 +7,7 @@ import 'package:untitled1/view/screen/auth/forgetpassword/verfiycode.dart';
 import 'package:untitled1/view/screen/auth/sign_up.dart';
 import 'package:untitled1/view/screen/auth/success_signUp.dart';
 import 'package:untitled1/view/screen/auth/verfiycodeSignUp.dart';
-import 'package:untitled1/view/screen/home/HomePage.dart';
+import 'package:untitled1/view/screen/home/screen/HomePage.dart';
 import 'package:untitled1/view/screen/OnBoarding.dart';
 import 'package:untitled1/view/screen/langauge/langauge.dart';
 import 'package:get/get.dart';

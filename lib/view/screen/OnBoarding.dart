@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
-import 'package:untitled1/view/screen/home/HomePage.dart';
+import 'package:untitled1/core/constant/imageassets.dart';
+import 'package:untitled1/view/screen/home/screen/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class OnBoarding extends PageView {
@@ -31,7 +34,7 @@ class _SplashScreenState extends State<OnBoarding> {
                  Column(
                     children: [
                       const SizedBox(height: 300,),
-                       const Icon(Icons.cabin_outlined,size: 100,color: Color.fromARGB(255, 44, 104, 46),),
+                      Image(image: const AssetImage(AppImageAssets.logo ),),
                        Text("0001".tr,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
                     ],
                 ),
