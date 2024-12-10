@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 abstract class HomeController extends GetxController {
@@ -5,6 +7,8 @@ abstract class HomeController extends GetxController {
 }
 
 class HomeControllerImp extends HomeController {
+  GlobalKey<FormState> formState = GlobalKey<FormState>();
+    final ThemeData theme = Get.theme;
   // تعريف المتغيرات الملاحظة
   var count = 0.obs;
   var isFavorite = false.obs;
